@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "All VALVE Inspection";
+}
+
+@model List<Preveld.Models.Valve>
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>View All VALVE Inspection Records</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">All WRAP Inspection Records</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Unique ID</th>
+                                    <th>Valve Tag</th>
+                                    <th>Valve Description</th>
+                                    <th>Client</th>
+                                    <th>Location</th>
+                                    <th>Date of Inspection</th>
+                                    <th>Leak Classification</th>
+                                    <th>Leak Rage<br />kg.min</th>
+                                    <th>Leak Color Code</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var valve in Model)
+                                {
+                                    <tr>
+                                        <td>@valve.Unique_ID</td>
+                                        <td>@valve.Valve_tag</td>
+                                        <td>@valve.Valve_description</td>
+                                        <td>@valve.Client</td>
+                                        <td>@valve.Location</td>
+                                        <td>@valve.Date_of_Inspection</td>
+                                        <td>@valve.Leak_Classification</td>
+                                        <td>@valve.Leak_Rate_kgmin</td>
+                                        <td>@valve.Leak_Color_Code</td>
+                                        <td>
+                                            <a href="/Valve/Edit/@valve.ID">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a href="/Valve/Delete/@valve.ID" class="text-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section>

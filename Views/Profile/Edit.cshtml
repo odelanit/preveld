@@ -1,0 +1,65 @@
+﻿@model Preveld.Models.UserProfile
+
+@{
+    ViewBag.Title = "Edit Account";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Edit Account - @Model.Full_Name</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+
+    <!-- Default box -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Account Information</h3>
+                </div>
+                <div class="card-body">
+                    @using (Html.BeginForm("Edit", "Profile", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            @Html.LabelFor(a => a.User_ID)
+                            @Html.TextBoxFor(a => a.User_ID, new { @class = "form-control" })
+                            <small>
+                                @Html.ValidationMessageFor(m => m.User_ID)
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(a => a.User_PW)
+                            @Html.TextBoxFor(a => a.User_PW, new { @class = "form-control" })
+                            <small>
+                                @Html.ValidationMessageFor(m => m.User_PW)
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(a => a.Full_Name)
+                            @Html.TextBoxFor(a => a.Full_Name, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(a => a.Email)
+                            @Html.TextBoxFor(a => a.Email, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(a => a.Phone)
+                            @Html.TextBoxFor(a => a.Phone, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary">Save</button>
+                            <button class="btn btn-secondary" type="reset">Cancel</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

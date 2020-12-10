@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="localhost" />
+  <setParameter name="DefaultConnection-Web.config Connection String" value="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=G:\preveld_db.mdb" />
+  <setParameter name="Preveld.ApplicationDBContext-Web.config Connection String" value="Preveld.ApplicationDBContext_ConnectionString" />
+</parameters>

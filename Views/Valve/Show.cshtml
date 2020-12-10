@@ -1,0 +1,271 @@
+﻿@model Preveld.ViewModels.ValveHistory
+@{
+    ViewBag.Title = "Add Records";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Add Records</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Valve Inspection Records</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <ul class="nav nav-pills flex-column nav-fill">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/Valve/Create">Add Records</a>
+                                    </li>
+                                    <li class="nav-item my-2 py-2 bg-light">
+                                        <h6>Historical Records</h6>
+                                    </li>
+                                    @foreach (var valve in Model.Valves)
+                                    {
+                                        <li class="nav-item">
+                                            <a class="nav-link @(ViewContext.RouteData.Values["ID"].ToString() == valve.ID.ToString() ? "active" : "")" href="/Valve/Show/@valve.ID">@valve.Unique_ID</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="col-md-9">
+                                    <div class="row">
+                                        <div class="col-6">
+
+                                        </div>
+                                        <div class="col-6">
+                                            <table class="table table-bordered">
+                                                <colgroup>
+                                                    <col width="50%" />
+                                                    <col width="50%" />
+                                                </colgroup>
+                                                <tr>
+                                                    <td>
+                                                        Unique ID
+                                                    </td>
+                                                    <td>
+                                                        @Model.Valve.Unique_ID
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Valve Tag
+                                                    </td>
+                                                    <td>
+                                                        @Model.Valve.Valve_tag
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Description
+                                                    </td>
+                                                    <td>
+                                                        @Model.Valve.Valve_description
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Location
+                                                    </td>
+                                                    <td>
+                                                        @Model.Valve.Location
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Client
+                                                    </td>
+                                                    <td>
+                                                        @Model.Valve.Client
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Date of Last Inspection
+                                                    </td>
+                                                    <td>
+                                                        @Model.Valve.Date_of_Inspection.ToString("MM/dd/yyyy")
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        COR No
+                                                    </td>
+                                                    <td>
+                                                        @Model.Valve.COR_No
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <table class="table table-bordered">
+                                        <colgroup>
+                                            <col width="25%" />
+                                            <col width="25%" />
+                                            <col width="25%" />
+                                            <col width="25%" />
+                                        </colgroup>
+                                        <tr>
+                                            <td>
+                                                Size
+                                            </td>
+                                            <td>
+                                                @Model.Valve.Size_Inch
+                                            </td>
+                                            <td>
+                                                Type
+                                            </td>
+                                            <td>
+                                                @Model.Valve.Type
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Function
+                                            </td>
+                                            <td>
+                                                @Model.Valve.Function
+                                            </td>
+                                            <td>
+                                                PID No
+                                            </td>
+                                            <td>
+                                                @Model.Valve.PID_No
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                P<sub>up</sub>
+                                            </td>
+                                            <td>
+                                                @Model.Valve.Pressure_UP
+                                            </td>
+                                            <td>
+                                                P<sub>down</sub>
+                                            </td>
+                                            <td>
+                                                @Model.Valve.Pressure_Down
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <td>
+                                                Valve Condition
+                                            </td>
+                                            <td>
+                                                @Model.Valve.LeaK_Condition
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <table class="table table-bordered">
+                                        <colgroup>
+                                            <col width="25%" />
+                                            <col width="25%" />
+                                            <col width="25%" />
+                                            <col width="25%" />
+                                        </colgroup>
+                                        <tr>
+                                            <td>
+                                                ASL(dB)
+                                            </td>
+                                            <td>
+                                                @Model.Valve.ASL_dB
+                                            </td>
+                                            <td>
+                                                Leak Classification
+                                            </td>
+                                            <td>
+                                                @Model.Valve.Leak_Classification
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Leak Rate(kg/min)
+                                            </td>
+                                            <td>
+                                                @Model.Valve.Leak_Rate_kgmin
+                                            </td>
+                                            <td>
+                                                Color Code
+                                            </td>
+                                            <td>
+                                                @Model.Valve.Leak_Color_Code
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                TLT Value (kg/s)
+                                            </td>
+                                            <td>
+                                                @Model.Valve.Tolerable_Leak_Threshold_TLT
+                                            </td>
+                                            <td>
+                                                Warning TLT (kg/s)
+                                            </td>
+                                            <td>
+                                                @Model.Valve.Warning_Limit_TLT
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table class="table table-bordered">
+                                        <colgroup>
+                                            <col width="25%" />
+                                            <col width="75%" />
+                                        </colgroup>
+                                        <tr>
+                                            <td>
+                                                Comment
+                                            </td>
+                                            <td>
+                                                @Model.Valve.Comment
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Recommended Action
+                                            </td>
+                                            <td>
+                                                @Model.Valve.Recommended_Action
+                                            </td>
+                                        </tr>
+                                    </table>
+
+
+                                    <div class="form-group">
+                                        @if (ViewBag.PrevRecordID != null)
+                                        {
+                                            <a class="btn btn-secondary" href="/Valve/Show/@ViewBag.PrevRecordID">< Previous Record</a>
+                                        }
+                                        <a class="btn btn-primary" href="/Valve/Edit/@Model.Valve.ID">Edit Record</a>
+                                        <a class="btn btn-danger" href="/Valve/Delete/@Model.Valve.ID">Delete Record</a>
+                                        @if (ViewBag.NextRecordID != null)
+                                        {
+                                            <a class="btn btn-secondary" href="/Wrap/Show/@ViewBag.NextRecordID">Next Records ></a>
+                                        }
+                                    </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

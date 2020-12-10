@@ -1,0 +1,339 @@
+﻿@model Preveld.ViewModels.ValveHistory
+@{
+    ViewBag.Title = "Add Records";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Add Records</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Valve Inspection Records</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <ul class="nav nav-pills flex-column nav-fill">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="/Valve/Create">Add Records</a>
+                                    </li>
+                                    <li class="nav-item my-2 py-2 bg-light">
+                                        <h6>Historical Records</h6>
+                                    </li>
+                                    @foreach (var valve in Model.Valves)
+                                    {
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/Valve/Show/@valve.ID">@valve.Unique_ID</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="col-md-9">
+                                @using (Html.BeginForm("Create", "Valve", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div class="row">
+                                        <div class="col-6">
+
+                                        </div>
+                                        <div class="col-6">
+                                            <table class="table table-bordered">
+                                                <colgroup>
+                                                    <col width="50%" />
+                                                    <col width="50%" />
+                                                </colgroup>
+                                                <tr>
+                                                    <td>
+                                                        @Html.LabelFor(a => a.Valve.Unique_ID)
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(a => a.Valve.Unique_ID, new { @class = "form-control" })
+                                                        <small>
+                                                            @Html.ValidationMessageFor(m => m.Valve.Unique_ID)
+                                                        </small>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        @Html.LabelFor(a => a.Valve.Valve_tag)
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(a => a.Valve.Valve_tag, new { @class = "form-control" })
+                                                        <small>
+                                                            @Html.ValidationMessageFor(m => m.Valve.Valve_tag)
+                                                        </small>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        @Html.LabelFor(a => a.Valve.Valve_description)
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(a => a.Valve.Valve_description, new { @class = "form-control" })
+                                                        <small>
+                                                            @Html.ValidationMessageFor(m => m.Valve.Valve_description)
+                                                        </small>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        @Html.LabelFor(a => a.Valve.Location)
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(a => a.Valve.Location, new { @class = "form-control" })
+                                                        <small>
+                                                            @Html.ValidationMessageFor(m => m.Valve.Location)
+                                                        </small>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        @Html.LabelFor(a => a.Valve.Client)
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(a => a.Valve.Client, new { @class = "form-control" })
+                                                        <small>
+                                                            @Html.ValidationMessageFor(m => m.Valve.Client)
+                                                        </small>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        @Html.LabelFor(a => a.Valve.Date_of_Inspection)
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(a => a.Valve.Date_of_Inspection, "{0:MM/dd/yyyy}", new { @class = "form-control", @id = "lastDate" })
+                                                        <small>
+                                                            @Html.ValidationMessageFor(m => m.Valve.Date_of_Inspection)
+                                                        </small>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        @Html.LabelFor(a => a.Valve.COR_No)
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(a => a.Valve.COR_No, new { @class = "form-control" })
+                                                        <small>
+                                                            @Html.ValidationMessageFor(m => m.Valve.COR_No)
+                                                        </small>
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <table class="table table-bordered">
+                                        <colgroup>
+                                            <col width="25%" />
+                                            <col width="25%" />
+                                            <col width="25%" />
+                                            <col width="25%" />
+                                        </colgroup>
+                                        <tr>
+                                            <td>
+                                                @Html.LabelFor(a => a.Valve.Size_Inch)
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(a => a.Valve.Size_Inch, new { @class = "form-control" })
+                                                <small>
+                                                    @Html.ValidationMessageFor(m => m.Valve.Size_Inch)
+                                                </small>
+                                            </td>
+                                            <td>
+                                                @Html.LabelFor(a => a.Valve.Type)
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(a => a.Valve.Type, new { @class = "form-control" })
+                                                <small>
+                                                    @Html.ValidationMessageFor(m => m.Valve.Type)
+                                                </small>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                @Html.LabelFor(a => a.Valve.Function)
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(a => a.Valve.Function, new { @class = "form-control" })
+                                                <small>
+                                                    @Html.ValidationMessageFor(m => m.Valve.Function)
+                                                </small>
+                                            </td>
+                                            <td>
+                                                @Html.LabelFor(a => a.Valve.PID_No)
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(a => a.Valve.PID_No, new { @class = "form-control" })
+                                                <small>
+                                                    @Html.ValidationMessageFor(m => m.Valve.PID_No)
+                                                </small>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                @Html.LabelFor(a => a.Valve.Pressure_UP)
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(a => a.Valve.Pressure_UP, new { @class = "form-control" })
+                                                <small>
+                                                    @Html.ValidationMessageFor(m => m.Valve.Pressure_UP)
+                                                </small>
+                                            </td>
+                                            <td>
+                                                @Html.LabelFor(a => a.Valve.Pressure_Down)
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(a => a.Valve.Pressure_Down, new { @class = "form-control" })
+                                                <small>
+                                                    @Html.ValidationMessageFor(m => m.Valve.Pressure_Down)
+                                                </small>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <td>
+                                                @Html.LabelFor(a => a.Valve.LeaK_Condition)
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(a => a.Valve.LeaK_Condition, new { @class = "form-control" })
+                                                <small>
+                                                    @Html.ValidationMessageFor(m => m.Valve.LeaK_Condition)
+                                                </small>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <table class="table table-bordered">
+                                        <colgroup>
+                                            <col width="25%" />
+                                            <col width="25%" />
+                                            <col width="25%" />
+                                            <col width="25%" />
+                                        </colgroup>
+                                        <tr>
+                                            <td>
+                                                @Html.LabelFor(a => a.Valve.ASL_dB)
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(a => a.Valve.ASL_dB, new { @class = "form-control" })
+                                                <small>
+                                                    @Html.ValidationMessageFor(m => m.Valve.ASL_dB)
+                                                </small>
+                                            </td>
+                                            <td>
+                                                @Html.LabelFor(a => a.Valve.Leak_Classification)
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(a => a.Valve.Leak_Classification, new { @class = "form-control" })
+                                                <small>
+                                                    @Html.ValidationMessageFor(m => m.Valve.Leak_Classification)
+                                                </small>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                @Html.LabelFor(a => a.Valve.Leak_Rate_kgmin)
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(a => a.Valve.Leak_Rate_kgmin, new { @class = "form-control" })
+                                                <small>
+                                                    @Html.ValidationMessageFor(m => m.Valve.Leak_Rate_kgmin)
+                                                </small>
+                                            </td>
+                                            <td>
+                                                @Html.LabelFor(a => a.Valve.Leak_Color_Code)
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(a => a.Valve.Leak_Color_Code, new { @class = "form-control" })
+                                                <small>
+                                                    @Html.ValidationMessageFor(m => m.Valve.Leak_Color_Code)
+                                                </small>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                @Html.LabelFor(a => a.Valve.Tolerable_Leak_Threshold_TLT)
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(a => a.Valve.Tolerable_Leak_Threshold_TLT, new { @class = "form-control" })
+                                                <small>
+                                                    @Html.ValidationMessageFor(m => m.Valve.Tolerable_Leak_Threshold_TLT)
+                                                </small>
+                                            </td>
+                                            <td>
+                                                @Html.LabelFor(a => a.Valve.Warning_Limit_TLT)
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(a => a.Valve.Warning_Limit_TLT, new { @class = "form-control" })
+                                                <small>
+                                                    @Html.ValidationMessageFor(m => m.Valve.Warning_Limit_TLT)
+                                                </small>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table class="table table-bordered">
+                                        <colgroup>
+                                            <col width="25%" />
+                                            <col width="75%" />
+                                        </colgroup>
+                                        <tr>
+                                            <td>
+                                                @Html.LabelFor(a => a.Valve.Comment)
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(a => a.Valve.Comment, new { @class = "form-control" })
+                                                <small>
+                                                    @Html.ValidationMessageFor(m => m.Valve.Comment)
+                                                </small>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                @Html.LabelFor(a => a.Valve.Recommended_Action)
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(a => a.Valve.Recommended_Action, new { @class = "form-control" })
+                                                <small>
+                                                    @Html.ValidationMessageFor(m => m.Valve.Recommended_Action)
+                                                </small>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+
+                                    <div class="form-group">
+                                        <button class="btn btn-primary">Save</button>
+                                        <button class="btn btn-secondary" type="reset">Cancel</button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+@section Scripts {
+    <script>
+        $('#lastDate').datepicker();
+    </script>
+}

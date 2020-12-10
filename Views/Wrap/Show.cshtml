@@ -1,0 +1,171 @@
+﻿@model Preveld.ViewModels.WrapHistoryViewModel
+@{
+    ViewBag.Title = "Add Records";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>View Records</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">WRAP Inspection Records</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <ul class="nav nav-pills flex-column nav-fill">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/Wrap/Create">Add Records</a>
+                                    </li>
+                                    <li class="nav-item my-2 py-2 bg-light">
+                                        <h6>Historical Records</h6>
+                                    </li>
+                                    @foreach (var wrap in Model.wraps)
+                                    {
+                                        <li class="nav-item">
+                                            <a class="nav-link @(ViewContext.RouteData.Values["ID"].ToString() == wrap.ID.ToString() ? "active" : "")"
+                                               href="/Wrap/Show/@wrap.ID">@wrap.Unique_ID</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="col-md-9">
+                                <table class="table table-bordered">
+                                    <colgroup>
+                                        <col width="50%" />
+                                        <col width="50%" />
+                                    </colgroup>
+                                    <tr>
+                                        <td>
+                                            Unique ID
+                                        </td>
+                                        <td>
+                                            @Model.wrap.Unique_ID
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Wrap No.
+                                        </td>
+                                        <td>
+                                            @Model.wrap.Wrap_No
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Location
+                                        </td>
+                                        <td>
+                                            @Model.wrap.Location
+                                        </td>
+                                    </tr>
+                                    <tr class="form-group">
+                                        <td>
+                                            Client
+                                        </td>
+                                        <td>
+                                            @Model.wrap.Location
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Date of Last Inspection
+                                        </td>
+                                        <td>
+                                            @Model.wrap.Date_of_last_Inspection.ToString("MM/dd/yyyy")
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            COR No
+                                        </td>
+                                        <td>
+                                            @Model.wrap.COR_No
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <table class="table table-bordered">
+                                    <colgroup>
+                                        <col width="33%" />
+                                        <col width="67%" />
+                                    </colgroup>
+                                    <tr class="form-group">
+                                        <td>
+                                            Line No.
+                                        </td>
+                                        <td>
+                                            @Model.wrap.Line_No
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Size
+                                        </td>
+                                        <td>
+                                            @Model.wrap.Size
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Status
+                                        </td>
+                                        <td>
+                                            @Model.wrap.Status
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table class="table table-bordered">
+                                    <colgroup>
+                                        <col width="33%" />
+                                        <col width="67%" />
+                                    </colgroup>
+                                    <tr>
+                                        <td>
+                                            Preliminary Findings
+                                        </td>
+                                        <td>
+                                            @Model.wrap._Priliminary_findings_on_Site
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Final Findings After Futher Analysis
+                                        </td>
+                                        <td>
+                                            @Model.wrap.Final_Findings
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div class="form-group">
+                                    @if (ViewBag.PrevRecordID != null)
+                                    {
+                                        <a class="btn btn-secondary" href="/Wrap/Show/@ViewBag.PrevRecordID">< Previous Record</a>
+                                    }
+                                    <a class="btn btn-primary" href="/Wrap/Edit/@Model.wrap.ID">Edit Record</a>
+                                    <a class="btn btn-danger" href="/Wrap/Delete/@Model.wrap.ID">Delete Record</a>
+                                    @if (ViewBag.NextRecordID != null)
+                                    {
+                                        <a class="btn btn-secondary" href="/Wrap/Show/@ViewBag.NextRecordID">Next Records ></a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

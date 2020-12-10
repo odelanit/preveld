@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "View All Account";
+}
+
+@model List<Preveld.Models.UserProfile>
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>View All Account</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">View All Account Information</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Username</th>
+                                    <th>Password</th>
+                                    <th>Full name</th>
+                                    <th>User Contact(Email)</th>
+                                    <th>User Contact(Mobile)</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var profile in Model)
+                                {
+                                    <tr>
+                                        <td>@profile.ID</td>
+                                        <td>@profile.User_ID</td>
+                                        <td>@profile.User_PW</td>
+                                        <td>@profile.Full_Name</td>
+                                        <td>@profile.Email</td>
+                                        <td>@profile.Phone</td>
+                                        <td>
+                                            <a href="/Profile/Edit/@profile.ID">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a href="/Profile/Delete/@profile.ID" class="text-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section>

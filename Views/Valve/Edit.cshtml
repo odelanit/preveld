@@ -1,0 +1,206 @@
+﻿@model Preveld.Models.Valve
+@{
+    ViewBag.Title = "Add Records";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Edit Valve Record</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Valve Inspection Records</h3>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("Edit", "Valve", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Unique_ID)
+                                @Html.TextBoxFor(a => a.Unique_ID, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Unique_ID)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Valve_tag)
+                                @Html.TextBoxFor(a => a.Valve_tag, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Valve_tag)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Valve_description)
+                                @Html.TextBoxFor(a => a.Valve_description, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Valve_description)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Location)
+                                @Html.TextBoxFor(a => a.Location, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Location)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Client)
+                                @Html.TextBoxFor(a => a.Client, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Client)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Date_of_Inspection)
+                                @Html.TextBoxFor(a => a.Date_of_Inspection, "{0:MM/dd/yyyy}", new { @class = "form-control", @id = "lastDate" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Date_of_Inspection)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.COR_No)
+                                @Html.TextBoxFor(a => a.COR_No, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.COR_No)
+                                </small>
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Size_Inch)
+                                @Html.TextBoxFor(a => a.Size_Inch, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Size_Inch)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Type)
+                                @Html.TextBoxFor(a => a.Type, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Type)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Function)
+                                @Html.TextBoxFor(a => a.Function, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Function)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.PID_No)
+                                @Html.TextBoxFor(a => a.PID_No, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.PID_No)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Pressure_UP)
+                                @Html.TextBoxFor(a => a.Pressure_UP, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Pressure_UP)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Pressure_Down)
+                                @Html.TextBoxFor(a => a.Pressure_Down, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Pressure_Down)
+                                </small>
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.LeaK_Condition)
+                                @Html.TextBoxFor(a => a.LeaK_Condition, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.LeaK_Condition)
+                                </small>
+                            </div>
+
+                            <hr />
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.ASL_dB)
+                                @Html.TextBoxFor(a => a.ASL_dB, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.ASL_dB)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Leak_Classification)
+                                @Html.TextBoxFor(a => a.Leak_Classification, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Leak_Classification)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Leak_Rate_kgmin)
+                                @Html.TextBoxFor(a => a.Leak_Rate_kgmin, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Leak_Rate_kgmin)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Leak_Color_Code)
+                                @Html.TextBoxFor(a => a.Leak_Color_Code, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Leak_Color_Code)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Tolerable_Leak_Threshold_TLT)
+                                @Html.TextBoxFor(a => a.Tolerable_Leak_Threshold_TLT, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Tolerable_Leak_Threshold_TLT)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Warning_Limit_TLT)
+                                @Html.TextBoxFor(a => a.Warning_Limit_TLT, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Warning_Limit_TLT)
+                                </small>
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Comment)
+                                @Html.TextBoxFor(a => a.Comment, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Comment)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Recommended_Action)
+                                @Html.TextBoxFor(a => a.Recommended_Action, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Recommended_Action)
+                                </small>
+                            </div>
+
+                            <div class="form-group">
+                                <button class="btn btn-primary">Save</button>
+                                <button class="btn btn-secondary" type="reset">Cancel</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        $('#lastDate').datepicker({
+            format: 'M/D/YYYY'
+        });
+    </script>
+}

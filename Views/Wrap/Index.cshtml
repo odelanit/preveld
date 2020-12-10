@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "View All WRAP Inspection Report";
+}
+
+@model List<Preveld.Models.Wrap>
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>View All WRAP Inspection Records</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">All WRAP Inspection Records</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Unique ID</th>
+                                    <th>Wrap No</th>
+                                    <th>Location</th>
+                                    <th>Client</th>
+                                    <th>Date of last Inspection</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var wrap in Model)
+                                {
+                                    <tr>
+                                        <td>@wrap.Unique_ID</td>
+                                        <td>@wrap.Wrap_No</td>
+                                        <td>@wrap.Location</td>
+                                        <td>@wrap.Client</td>
+                                        <td>@wrap.Date_of_last_Inspection</td>
+                                        <td>
+                                            <a href="/Wrap/Edit/@wrap.ID">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a href="/Wrap/Delete/@wrap.ID" class="text-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

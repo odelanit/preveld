@@ -1,0 +1,4 @@
+﻿.nav-sidebar .nav-item > .nav-link:not(.btn) {
+    display: flex;
+    align-items: center;
+}

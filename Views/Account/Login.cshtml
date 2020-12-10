@@ -1,0 +1,47 @@
+﻿@model Preveld.Models.UserProfile
+
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    ViewBag.Title = "Login";
+}
+
+<div class="login-box">
+    <div class="login-logo">
+        <h3>Welcome to IDE@S</h3>
+    </div>
+    <div class="card">
+        <div class="card-body login-card-body">
+            <p class="login-box-msg">Inspection Database and Equipement Infomation System</p>
+            @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                if (ViewBag.Message != null)
+                {
+                    <div class="alert alert-danger">
+                        @ViewBag.Message
+                    </div>
+                }
+
+                <div class="form-group">
+                    @Html.LabelFor(a => a.User_ID)
+                    @Html.TextBoxFor(a => a.User_ID, new { @class = "form-control" })
+                    <small>
+                        @Html.ValidationMessageFor(a => a.User_ID)
+                    </small>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(a => a.User_PW)
+                    @Html.PasswordFor(a => a.User_PW, new { @class = "form-control" })
+                    <small>
+                        @Html.ValidationMessageFor(a => a.User_PW)
+                    </small>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block">Login</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

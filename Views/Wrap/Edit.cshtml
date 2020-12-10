@@ -1,0 +1,125 @@
+﻿@model Preveld.Models.Wrap
+@{
+    ViewBag.Title = "Edit Records";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Edit Records</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">WRAP Inspection Records</h3>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("Create", "Wrap", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Unique_ID)
+                                @Html.TextBoxFor(a => a.Unique_ID, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Unique_ID)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Wrap_No)
+                                @Html.TextBoxFor(a => a.Wrap_No, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Wrap_No)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Location)
+                                @Html.TextBoxFor(a => a.Location, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Location)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Client)
+                                @Html.TextBoxFor(a => a.Client, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Client)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Date_of_last_Inspection)
+                                @Html.TextBoxFor(a => a.Date_of_last_Inspection, "{0:MM/dd/yyyy}", new { @class = "form-control", @id = "lastDate" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Date_of_last_Inspection)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.COR_No)
+                                @Html.TextBoxFor(a => a.COR_No, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.COR_No)
+                                </small>
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Line_No)
+                                @Html.TextBoxFor(a => a.Line_No, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Line_No)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Size)
+                                @Html.TextBoxFor(a => a.Size, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Size)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Status)
+                                @Html.TextBoxFor(a => a.Status, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Status)
+                                </small>
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                @Html.LabelFor(a => a._Priliminary_findings_on_Site)
+                                @Html.TextBoxFor(a => a._Priliminary_findings_on_Site, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m._Priliminary_findings_on_Site)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(a => a.Final_Findings)
+                                @Html.TextBoxFor(a => a.Final_Findings, new { @class = "form-control" })
+                                <small>
+                                    @Html.ValidationMessageFor(m => m.Final_Findings)
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary">Save</button>
+                                <button class="btn btn-secondary" type="reset">Cancel</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        $('#lastDate').datepicker({
+            format: 'M/D/YYYY'
+        });
+    </script>
+}

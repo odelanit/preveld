@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - PREVELD</title>
+    @Styles.Render("~/Content/fontawesome")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/adminlte/js")
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <a href="/" class="brand-link text-center">
+                <span class="brand-text font-weight-light">PREVELD</span>
+            </a>
+            <div class="sidebar">
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <li class="nav-header">Create Access</li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Create", "Profile")" class="nav-link @((ViewContext.RouteData.Values["Action"].ToString()=="Create" && ViewContext.RouteData.Values["Controller"].ToString() == "Profile") ? "active" : "")">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>
+                                    Create Account
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Profile/Index" class="nav-link @((ViewContext.RouteData.Values["Action"].ToString()=="Index" && ViewContext.RouteData.Values["Controller"].ToString() == "Profile") ? "active" : "")">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>
+                                    View All Account
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-header">Create Record</li>
+                        <li class="nav-item">
+                            <a href="/Wrap/Create" class="nav-link @((ViewContext.RouteData.Values["Action"].ToString()=="Create" && ViewContext.RouteData.Values["Controller"].ToString() == "Wrap") ? "active" : "")">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>
+                                    WRAP Inspection <br /> Report
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Valve/Create" class="nav-link @((ViewContext.RouteData.Values["Action"].ToString()=="Create" && ViewContext.RouteData.Values["Controller"].ToString() == "Valve") ? "active" : "")">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>
+                                    VALVE Inspection <br />Report
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-header">View All Records</li>
+                        <li class="nav-item">
+                            <a href="/Wrap/Index" class="nav-link @((ViewContext.RouteData.Values["Action"].ToString()=="Index" && ViewContext.RouteData.Values["Controller"].ToString() == "Wrap") ? "active" : "")">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>
+                                    View All<br /> WRAP Inspection<br /> Report
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Valve/Index" class="nav-link @((ViewContext.RouteData.Values["Action"].ToString()=="Index" && ViewContext.RouteData.Values["Controller"].ToString() == "Valve") ? "active" : "")">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>
+                                    View All<br /> VALVE Inspection<br /> Report
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-header">View Companies Records</li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>
+                                    PTTEP
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>
+                                    SSB
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>
+                                    PCSV SKG/SKO
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>
+                                    PCSB SBA
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>
+                                    SMDS
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>
+                                    EQ
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>
+                                    EPOMS
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>
+                                    MLNG
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Account/Logout" class="nav-link btn btn-danger">
+                                <p>Logout</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <div class="content-wrapper">
+            @RenderBody()
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/adminlte/js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
