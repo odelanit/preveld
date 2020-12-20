@@ -13,5 +13,7 @@ namespace Preveld
         public DbSet<Wrap> Wraps { get; set; }
 
         public DbSet<Valve> Valves { get; set; }
+
+        public DbSet<Membership> Memberships { get; set; }
     }
 }
