@@ -1,6 +1,8 @@
 ﻿using FluentValidation;
 using FluentValidation.Attributes;
 using Microsoft.IdentityModel.Tokens;
+using Preveld.Models;
+using Preveld.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,6 +11,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Web.Http;
+using WebMatrix.WebData;
 
 namespace Preveld.Controllers.api
 {
@@ -92,5 +95,44 @@ namespace Preveld.Controllers.api
                 phone = phone
             };
         }
+
+        [HttpPost]
+        public Object ForgotPassword(ForgotPassword model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Invalid Input.");
+            }
+
+            UserProfile userProfile = db.UserProfiles.Where(x => x.Email.Equals(model.Email)).FirstOrDefault();
+            if (userProfile == null)
+            {
+                return BadRequest("We can't find a user with that e-mail address.");
+            }
+
+            if (WebSecurity.UserExists(userProfile.User_ID))
+            {
+                var token = WebSecurity.GeneratePasswordResetToken(userProfile.User_ID);
+                if (token == null)
+                {
+                    return InternalServerError();
+                }
+                else
+                {
+                    string To = userProfile.Email, UserID, Password, SMTPPort, Host;
+                    var url = Url.Link("Default", new { Controller = "Account", Action = "ResetPassword", email = userProfile.Email, code = token });
+                    var linkHref = "<a href=\"" + url + "\">Reset Password</a>";
+                    string subject = "Reset Password Notification";
+                    string body = "<b>Please find the password reset link.</b><br />" + linkHref;
+
+                    EmailManager.AppSettings(out UserID, out Password, out SMTPPort, out Host);
+                    EmailManager.SendEmail(UserID, subject, body, To, UserID, Password, SMTPPort, Host);
+
+                }
+            }
+
+            return new { data = "We have e-mailed your password reset link!" };
+        }
+
     }
 }

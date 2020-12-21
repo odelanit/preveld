@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Preveld.Controllers
 {
-    public class WrapController : Controller
+    public class WrapController : BaseController
     {
         private ApplicationDBContext db = new ApplicationDBContext();
         

@@ -71,71 +71,24 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-header">View Companies Records</li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-circle nav-icon"></i>
-                                <p>
-                                    PTTEP
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-circle nav-icon"></i>
-                                <p>
-                                    SSB
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-circle nav-icon"></i>
-                                <p>
-                                    PCSV SKG/SKO
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-circle nav-icon"></i>
-                                <p>
-                                    PCSB SBA
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-circle nav-icon"></i>
-                                <p>
-                                    SMDS
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-circle nav-icon"></i>
-                                <p>
-                                    EQ
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-circle nav-icon"></i>
-                                <p>
-                                    EPOMS
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-circle nav-icon"></i>
-                                <p>
-                                    MLNG
-                                </p>
-                            </a>
-                        </li>
+                        @if (ViewBag.Clients != null)
+                        {
+                            <li class="nav-header">View Companies Records</li>
+                            foreach (var client in ViewBag.Clients)
+                            {
+                                <li class="nav-item">
+                                    <a href="/Client/@client.Name" class="nav-link">
+                                        <i class="fas fa-circle nav-icon"></i>
+                                        <p>
+                                            @client.Name
+                                        </p>
+                                    </a>
+                                </li>
+                            }
+                        }
+
+
+                        <li class="nav-header"></li>
                         <li class="nav-item">
                             <a href="/Account/Logout" class="nav-link btn btn-danger">
                                 <p>Logout</p>

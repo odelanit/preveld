@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Preveld.Controllers
 {
-    public class ProfileController : Controller
+    public class ProfileController : BaseController
     {
         private ApplicationDBContext db = new ApplicationDBContext();
 

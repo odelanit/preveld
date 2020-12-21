@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Preveld.Controllers
 {
-    public class ValveController : Controller
+    public class ValveController : BaseController
     {
         private ApplicationDBContext db = new ApplicationDBContext();
 
