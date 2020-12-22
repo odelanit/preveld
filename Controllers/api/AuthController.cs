@@ -90,9 +90,12 @@ namespace Preveld.Controllers.api
             var phone = claims.Where(p => p.Type == "Phone").FirstOrDefault()?.Value;
             return new
             {
-                username = username,
-                fullname = fullName,
-                phone = phone
+                data = new
+                {
+                    username = username,
+                    fullname = fullName,
+                    phone = phone
+                }
             };
         }
 

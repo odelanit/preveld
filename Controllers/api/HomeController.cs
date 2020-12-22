@@ -13,8 +13,9 @@ namespace Preveld.Controllers.api
     {
         readonly ApplicationDBContext db = new ApplicationDBContext();
 
-        // GET api/<controller>
-        public object Get()
+        [Authorize]
+        [HttpGet]
+        public object Clients()
         {
 
             var query = db.Valves.Select(v => new Client()
@@ -30,28 +31,11 @@ namespace Preveld.Controllers.api
             query = query.Union(query2);
             var list = query.ToList();
 
-            return list;
+            return new { 
+                data = list
+            };
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<controller>
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
-        }
+       
     }
 }

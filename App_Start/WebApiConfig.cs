@@ -34,6 +34,12 @@ namespace Preveld
             FluentValidationModelValidatorProvider.Configure(config);
 
             config.Routes.MapHttpRoute(
+                name: "ClientApi",
+                routeTemplate: "api/client/{name}",
+                defaults: new { controller = "Client", action = "Index" }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
