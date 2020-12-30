@@ -14,9 +14,9 @@
 </section>
 
 <section class="content">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">WRAP Inspection Records</h3>
@@ -31,7 +31,7 @@
                                     <li class="nav-item my-2 py-2 bg-light">
                                         <h6>Historical Records</h6>
                                     </li>
-                                    @foreach (var wrap in Model.wraps)
+                                    @foreach (var wrap in Model.Wraps)
                                     {
                                         <li class="nav-item">
                                             <a class="nav-link @(ViewContext.RouteData.Values["ID"].ToString() == wrap.ID.ToString() ? "active" : "")"
@@ -51,7 +51,7 @@
                                             Unique ID
                                         </td>
                                         <td>
-                                            @Model.wrap.Unique_ID
+                                            @Model.Wrap.Unique_ID
                                         </td>
                                     </tr>
                                     <tr>
@@ -59,7 +59,7 @@
                                             Wrap No.
                                         </td>
                                         <td>
-                                            @Model.wrap.Wrap_No
+                                            @Model.Wrap.Wrap_No
                                         </td>
                                     </tr>
                                     <tr>
@@ -67,7 +67,7 @@
                                             Location
                                         </td>
                                         <td>
-                                            @Model.wrap.Location
+                                            @Model.Wrap.Location
                                         </td>
                                     </tr>
                                     <tr class="form-group">
@@ -75,7 +75,7 @@
                                             Client
                                         </td>
                                         <td>
-                                            @Model.wrap.Location
+                                            @Model.Wrap.Location
                                         </td>
                                     </tr>
                                     <tr>
@@ -83,7 +83,7 @@
                                             Date of Last Inspection
                                         </td>
                                         <td>
-                                            @Model.wrap.Date_of_last_Inspection.ToString("MM/dd/yyyy")
+                                            @Model.Wrap.Date_of_last_Inspection.ToString("MM/dd/yyyy")
                                         </td>
                                     </tr>
                                     <tr>
@@ -91,7 +91,7 @@
                                             COR No
                                         </td>
                                         <td>
-                                            @Model.wrap.COR_No
+                                            @Model.Wrap.COR_No
                                         </td>
                                     </tr>
                                 </table>
@@ -106,7 +106,7 @@
                                             Line No.
                                         </td>
                                         <td>
-                                            @Model.wrap.Line_No
+                                            @Model.Wrap.Line_No
                                         </td>
                                     </tr>
                                     <tr>
@@ -114,7 +114,7 @@
                                             Size
                                         </td>
                                         <td>
-                                            @Model.wrap.Size
+                                            @Model.Wrap.Size
                                         </td>
                                     </tr>
                                     <tr>
@@ -122,7 +122,7 @@
                                             Status
                                         </td>
                                         <td>
-                                            @Model.wrap.Status
+                                            @Model.Wrap.Status
                                         </td>
                                     </tr>
                                 </table>
@@ -136,7 +136,7 @@
                                             Preliminary Findings
                                         </td>
                                         <td>
-                                            @Model.wrap._Priliminary_findings_on_Site
+                                            @Model.Wrap._Priliminary_findings_on_Site
                                         </td>
 
                                     </tr>
@@ -145,7 +145,7 @@
                                             Final Findings After Futher Analysis
                                         </td>
                                         <td>
-                                            @Model.wrap.Final_Findings
+                                            @Model.Wrap.Final_Findings
                                         </td>
                                     </tr>
                                 </table>
@@ -154,8 +154,8 @@
                                     {
                                         <a class="btn btn-secondary" href="/Wrap/Show/@ViewBag.PrevRecordID">< Previous Record</a>
                                     }
-                                    <a class="btn btn-primary" href="/Wrap/Edit/@Model.wrap.ID">Edit Record</a>
-                                    <a class="btn btn-danger" href="/Wrap/Delete/@Model.wrap.ID">Delete Record</a>
+                                    <a class="btn btn-primary" href="/Wrap/Edit/@Model.Wrap.ID">Edit Record</a>
+                                    <a class="btn btn-danger" href="/Wrap/Delete/@Model.Wrap.ID">Delete Record</a>
                                     @if (ViewBag.NextRecordID != null)
                                     {
                                         <a class="btn btn-secondary" href="/Wrap/Show/@ViewBag.NextRecordID">Next Records ></a>
@@ -166,6 +166,35 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        QR Code
+
+                        <button class="btn btn-primary btn-sm float-right" id="print-qrcode">Print</button>
+                    </div>
+                    <div class="card-body" id="qrcode-wrapper">
+                        <p class="text-center">ID: <strong>@Model.Wrap.ID</strong></p>
+                        <p class="text-center">Unique ID: <strong>@Model.Wrap.Unique_ID</strong></p>
+                        <p class="text-center">Location: <strong>@Model.Wrap.Location</strong></p>
+                        <p class="text-center">Client: <strong>@Model.Wrap.Client</strong></p>
+                        <div class="text-center">
+                            <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.QrCode))" height="300" width="300" />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/printThis")
+    <script>
+        $('#print-qrcode').on('click',
+            function () {
+                $('#qrcode-wrapper').printThis();
+            })
+    </script>
+}

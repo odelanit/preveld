@@ -404,10 +404,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/13/2012 12:19:34</publishTime>
     </File>
     <File Include="bin/Preveld.dll">
-      <publishTime>12/22/2020 20:12:49</publishTime>
+      <publishTime>12/28/2020 01:57:15</publishTime>
     </File>
     <File Include="bin/Preveld.pdb">
-      <publishTime>12/22/2020 20:12:49</publishTime>
+      <publishTime>12/28/2020 01:57:15</publishTime>
+    </File>
+    <File Include="bin/QRCoder.dll">
+      <publishTime>11/17/2020 16:57:42</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>06/27/2016 14:50:24</publishTime>
@@ -1286,7 +1289,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/03/2020 10:12:28</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>12/03/2020 21:18:51</publishTime>
+      <publishTime>12/27/2020 01:55:29</publishTime>
     </File>
     <File Include="Views/Profile/Create.cshtml">
       <publishTime>12/04/2020 04:23:24</publishTime>
@@ -1325,7 +1328,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/04/2020 18:23:35</publishTime>
     </File>
     <File Include="Views/Wrap/Edit.cshtml">
-      <publishTime>12/04/2020 18:24:28</publishTime>
+      <publishTime>12/23/2020 13:47:57</publishTime>
     </File>
     <File Include="Views/Wrap/Index.cshtml">
       <publishTime>12/04/2020 04:56:09</publishTime>
@@ -1337,7 +1340,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/03/2020 10:12:28</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/21/2020 12:57:54</publishTime>
+      <publishTime>12/27/2020 02:10:30</publishTime>
     </File>
   </ItemGroup>
 </Project>

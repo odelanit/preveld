@@ -1,11 +1,15 @@
-﻿using Preveld.Infrastructure;
+﻿using System;
+using Preveld.Infrastructure;
 using Preveld.Models;
 using Preveld.ViewModels;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Dynamic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Web.Mvc;
+using QRCoder;
 
 namespace Preveld.Controllers
 {
@@ -16,7 +20,7 @@ namespace Preveld.Controllers
         [CustomAuthorize]
         public ActionResult Index()
         {
-            List<Wrap> lists = db.Wraps.ToList();
+            List<Wrap> lists = db.Wraps.OrderByDescending(w => w.Date_of_last_Inspection).ToList();
             return View(lists);
         }
 
@@ -24,8 +28,8 @@ namespace Preveld.Controllers
         public ActionResult Create()
         {
             WrapHistoryViewModel wrapHistoryViewModel = new WrapHistoryViewModel();
-            wrapHistoryViewModel.wrap = new Wrap();
-            wrapHistoryViewModel.wraps = db.Wraps.OrderByDescending(x => x.Date_of_last_Inspection).ToList();
+            wrapHistoryViewModel.Wrap = new Wrap();
+            wrapHistoryViewModel.Wraps = db.Wraps.OrderByDescending(x => x.Date_of_last_Inspection).ToList();
             return View(wrapHistoryViewModel);
         }
 
@@ -34,7 +38,7 @@ namespace Preveld.Controllers
         [CustomAuthorize]
         public ActionResult Create(WrapHistoryViewModel wrapHistoryViewModel)
         {
-            var wrap = wrapHistoryViewModel.wrap;
+            var wrap = wrapHistoryViewModel.Wrap;
 
             if (ModelState.IsValid)
             {
@@ -43,7 +47,7 @@ namespace Preveld.Controllers
                 return RedirectToAction("Index");
             }
 
-            wrapHistoryViewModel.wraps = db.Wraps.OrderByDescending(x => x.Date_of_last_Inspection).ToList();
+            wrapHistoryViewModel.Wraps = db.Wraps.OrderByDescending(x => x.Date_of_last_Inspection).ToList();
             return View(wrapHistoryViewModel);
         }
 
@@ -52,8 +56,8 @@ namespace Preveld.Controllers
         {
             WrapHistoryViewModel wrapHistoryViewModel = new WrapHistoryViewModel();
             var currentWrap = db.Wraps.Find(ID);
-            wrapHistoryViewModel.wrap = currentWrap;
-            wrapHistoryViewModel.wraps = db.Wraps.OrderByDescending(x => x.Date_of_last_Inspection).ToList();
+            wrapHistoryViewModel.Wrap = currentWrap;
+            wrapHistoryViewModel.Wraps = db.Wraps.OrderByDescending(x => x.Date_of_last_Inspection).ToList();
 
             var nextWrap = db.Wraps.Where(x => x.Date_of_last_Inspection < currentWrap.Date_of_last_Inspection).OrderByDescending(x => x.Date_of_last_Inspection).FirstOrDefault();
             if (nextWrap != null)
@@ -73,6 +77,15 @@ namespace Preveld.Controllers
             {
                 ViewBag.PrevRecordID = null;
             }
+
+            var plainText = "{\"wrap\":" + currentWrap.ID + "}";
+
+            QRCodeGenerator _qrCode = new QRCodeGenerator();
+            QRCodeData _qrCodeData = _qrCode.CreateQrCode(plainText, QRCodeGenerator.ECCLevel.Q);
+            QRCode qrCode = new QRCode(_qrCodeData);
+            Bitmap qrCodeImage = qrCode.GetGraphic(20);
+
+            wrapHistoryViewModel.QrCode = BitmapToBytesCode(qrCodeImage);
 
 
             return View(wrapHistoryViewModel);
@@ -107,6 +120,16 @@ namespace Preveld.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+        [NonAction]
+        private static Byte[] BitmapToBytesCode(Bitmap image)
+        {
+            using (MemoryStream stream = new MemoryStream())
+            {
+                image.Save(stream, ImageFormat.Png);
+                return stream.ToArray();
+            }
         }
     }
 }

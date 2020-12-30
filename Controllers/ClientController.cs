@@ -10,13 +10,13 @@ namespace Preveld.Controllers
 {
     public class ClientController : BaseController
     {
-        ApplicationDBContext db = new ApplicationDBContext();
+        private ApplicationDBContext _db = new ApplicationDBContext();
         
         [CustomAuthorize]
         public ActionResult Index(string name)
         {
-            var valves = db.Valves.Where(v => v.Client.Equals(name)).ToList();
-            var wraps = db.Wraps.Where(w => w.Client.Equals(name)).ToList();
+            var valves = _db.Valves.Where(v => v.Client.Equals(name)).ToList();
+            var wraps = _db.Wraps.Where(w => w.Client.Equals(name)).ToList();
             ClientDataViewModel clientDataViewModel = new ClientDataViewModel();
             clientDataViewModel.Valves = valves;
             clientDataViewModel.Wraps = wraps;

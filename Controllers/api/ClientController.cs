@@ -16,14 +16,12 @@ namespace Preveld.Controllers.api
         [HttpGet]
         public object Index(string name)
         {
-            var valves = db.Valves.Where(v => v.Client.Equals(name)).ToList();
-            var wraps = db.Wraps.Where(w => w.Client.Equals(name)).ToList();
+            var valves = db.Valves.Where(v => v.Client.Equals(name)).OrderByDescending(v => v.Date_of_Inspection).ToList();
+            var wraps = db.Wraps.Where(w => w.Client.Equals(name)).OrderByDescending(w => w.Date_of_last_Inspection).ToList();
             ClientDataViewModel clientDataViewModel = new ClientDataViewModel();
             clientDataViewModel.Valves = valves;
             clientDataViewModel.Wraps = wraps;
             return new { data = clientDataViewModel };
         }
-
-      
     }
 }

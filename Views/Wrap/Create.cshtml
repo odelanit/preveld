@@ -31,7 +31,7 @@
                                     <li class="nav-item my-2 py-2 bg-light">
                                         <h6>Historical Records</h6>
                                     </li>
-                                    @foreach (var wrap in Model.wraps)
+                                    @foreach (var wrap in Model.Wraps)
                                     {
                                         <li class="nav-item">
                                             <a class="nav-link" href="/Wrap/Show/@wrap.ID">@wrap.Unique_ID</a>
@@ -50,67 +50,67 @@
                                         </colgroup>
                                         <tr>
                                             <td>
-                                                @Html.LabelFor(a => a.wrap.Unique_ID)
+                                                @Html.LabelFor(a => a.Wrap.Unique_ID)
                                             </td>
                                             <td>
-                                                @Html.TextBoxFor(a => a.wrap.Unique_ID, new { @class = "form-control" })
+                                                @Html.TextBoxFor(a => a.Wrap.Unique_ID, new { @class = "form-control" })
                                                 <small>
-                                                    @Html.ValidationMessageFor(m => m.wrap.Unique_ID)
+                                                    @Html.ValidationMessageFor(m => m.Wrap.Unique_ID)
                                                 </small>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                @Html.LabelFor(a => a.wrap.Wrap_No)
+                                                @Html.LabelFor(a => a.Wrap.Wrap_No)
                                             </td>
                                             <td>
-                                                @Html.TextBoxFor(a => a.wrap.Wrap_No, new { @class = "form-control" })
+                                                @Html.TextBoxFor(a => a.Wrap.Wrap_No, new { @class = "form-control" })
                                                 <small>
-                                                    @Html.ValidationMessageFor(m => m.wrap.Wrap_No)
+                                                    @Html.ValidationMessageFor(m => m.Wrap.Wrap_No)
                                                 </small>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                @Html.LabelFor(a => a.wrap.Location)
+                                                @Html.LabelFor(a => a.Wrap.Location)
                                             </td>
                                             <td>
-                                                @Html.TextBoxFor(a => a.wrap.Location, new { @class = "form-control" })
+                                                @Html.TextBoxFor(a => a.Wrap.Location, new { @class = "form-control" })
                                                 <small>
-                                                    @Html.ValidationMessageFor(m => m.wrap.Location)
+                                                    @Html.ValidationMessageFor(m => m.Wrap.Location)
                                                 </small>
                                             </td>
                                         </tr>
                                         <tr class="form-group">
                                             <td>
-                                                @Html.LabelFor(a => a.wrap.Client)
+                                                @Html.LabelFor(a => a.Wrap.Client)
                                             </td>
                                             <td>
-                                                @Html.TextBoxFor(a => a.wrap.Client, new { @class = "form-control" })
+                                                @Html.TextBoxFor(a => a.Wrap.Client, new { @class = "form-control" })
                                                 <small>
-                                                    @Html.ValidationMessageFor(m => m.wrap.Client)
+                                                    @Html.ValidationMessageFor(m => m.Wrap.Client)
                                                 </small>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                @Html.LabelFor(a => a.wrap.Date_of_last_Inspection)
+                                                @Html.LabelFor(a => a.Wrap.Date_of_last_Inspection)
                                             </td>
                                             <td>
-                                                @Html.TextBoxFor(a => a.wrap.Date_of_last_Inspection, "{0:MM/dd/yyyy}", new { @class = "form-control", @id = "lastDate" })
+                                                @Html.TextBoxFor(a => a.Wrap.Date_of_last_Inspection, "{0:MM/dd/yyyy}", new { @class = "form-control", @id = "lastDate" })
                                                 <small>
-                                                    @Html.ValidationMessageFor(m => m.wrap.Date_of_last_Inspection)
+                                                    @Html.ValidationMessageFor(m => m.Wrap.Date_of_last_Inspection)
                                                 </small>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                @Html.LabelFor(a => a.wrap.COR_No)
+                                                @Html.LabelFor(a => a.Wrap.COR_No)
                                             </td>
                                             <td>
-                                                @Html.TextBoxFor(a => a.wrap.COR_No, new { @class = "form-control" })
+                                                @Html.TextBoxFor(a => a.Wrap.COR_No, new { @class = "form-control" })
                                                 <small>
-                                                    @Html.ValidationMessageFor(m => m.wrap.COR_No)
+                                                    @Html.ValidationMessageFor(m => m.Wrap.COR_No)
                                                 </small>
                                             </td>
 
@@ -124,34 +124,34 @@
                                         </colgroup>
                                         <tr class="form-group">
                                             <td>
-                                                @Html.LabelFor(a => a.wrap.Line_No)
+                                                @Html.LabelFor(a => a.Wrap.Line_No)
                                             </td>
                                             <td>
-                                                @Html.TextBoxFor(a => a.wrap.Line_No, new { @class = "form-control" })
+                                                @Html.TextBoxFor(a => a.Wrap.Line_No, new { @class = "form-control" })
                                                 <small>
-                                                    @Html.ValidationMessageFor(m => m.wrap.Line_No)
+                                                    @Html.ValidationMessageFor(m => m.Wrap.Line_No)
                                                 </small>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                @Html.LabelFor(a => a.wrap.Size)
+                                                @Html.LabelFor(a => a.Wrap.Size)
                                             </td>
                                             <td>
-                                                @Html.TextBoxFor(a => a.wrap.Size, new { @class = "form-control" })
+                                                @Html.TextBoxFor(a => a.Wrap.Size, new { @class = "form-control" })
                                                 <small>
-                                                    @Html.ValidationMessageFor(m => m.wrap.Size)
+                                                    @Html.ValidationMessageFor(m => m.Wrap.Size)
                                                 </small>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                @Html.LabelFor(a => a.wrap.Status)
+                                                @Html.LabelFor(a => a.Wrap.Status)
                                             </td>
                                             <td>
-                                                @Html.TextBoxFor(a => a.wrap.Status, new { @class = "form-control" })
+                                                @Html.TextBoxFor(a => a.Wrap.Status, new { @class = "form-control" })
                                                 <small>
-                                                    @Html.ValidationMessageFor(m => m.wrap.Status)
+                                                    @Html.ValidationMessageFor(m => m.Wrap.Status)
                                                 </small>
                                             </td>
                                         </tr>
@@ -163,24 +163,24 @@
                                         </colgroup>
                                         <tr>
                                             <td>
-                                                @Html.LabelFor(a => a.wrap._Priliminary_findings_on_Site)
+                                                @Html.LabelFor(a => a.Wrap._Priliminary_findings_on_Site)
                                             </td>
                                             <td>
-                                                @Html.TextBoxFor(a => a.wrap._Priliminary_findings_on_Site, new { @class = "form-control" })
+                                                @Html.TextBoxFor(a => a.Wrap._Priliminary_findings_on_Site, new { @class = "form-control" })
                                                 <small>
-                                                    @Html.ValidationMessageFor(m => m.wrap._Priliminary_findings_on_Site)
+                                                    @Html.ValidationMessageFor(m => m.Wrap._Priliminary_findings_on_Site)
                                                 </small>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>
-                                                @Html.LabelFor(a => a.wrap.Final_Findings)
+                                                @Html.LabelFor(a => a.Wrap.Final_Findings)
                                             </td>
                                             <td>
-                                                @Html.TextBoxFor(a => a.wrap.Final_Findings, new { @class = "form-control" })
+                                                @Html.TextBoxFor(a => a.Wrap.Final_Findings, new { @class = "form-control" })
                                                 <small>
-                                                    @Html.ValidationMessageFor(m => m.wrap.Final_Findings)
+                                                    @Html.ValidationMessageFor(m => m.Wrap.Final_Findings)
                                                 </small>
                                             </td>
                                         </tr>

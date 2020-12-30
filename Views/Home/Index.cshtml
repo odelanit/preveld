@@ -1,3 +1,24 @@
-﻿@{
+﻿@model Preveld.ViewModels.LatestRecord
+@{
     ViewBag.Title = "Home Page";
 }
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Welcome</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.qrCode))" height="300" width="300"/>
+            </div>
+        </div>
+    </div>
+</section>
